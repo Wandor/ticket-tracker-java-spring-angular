@@ -16,6 +16,9 @@ spring:
           time_zone: UTC
   flyway:
     locations: classpath:db/migration
+  jackson:
+    # Matches the API contract (created_at, total_pages) without per-field annotations.
+    property-naming-strategy: SNAKE_CASE
 
 server:
   port: ${PORT:8080}
