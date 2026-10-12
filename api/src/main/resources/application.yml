@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: ticket-tracker
+  datasource:
+    url: ${DATABASE_URL:jdbc:mysql://localhost:53306/tickets}
+    username: ${DATABASE_USER:tickets}
+    password: ${DATABASE_PASSWORD:tickets}
+  jpa:
+    # Flyway owns the schema; Hibernate only checks that the entity matches it.
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+  flyway:
+    locations: classpath:db/migration
+
+server:
+  port: ${PORT:8080}
